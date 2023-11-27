@@ -1,3 +1,6 @@
+<?php
+$error = isset($_GET['error']) ? $_GET['error'] : '';
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -16,14 +19,19 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <h1>Authentification</h1>
     <div class = "formulaire">
-    <form action = POST>
+    <form action = "../../dao/gestionprod.php" method = "post">
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <?php
+        if ($error == 1){
+          echo'<h2>Login ou Mot de passe incorrect</h2>';
+        }
+        ?>
+        <label for="exampleInputEmail1" class="form-label">Login</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="loginProp">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" class="form-control" id="exampleInputPassword1" name = "motPasse">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
